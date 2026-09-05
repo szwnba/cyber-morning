@@ -4,132 +4,203 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>赛博早安 · 2026年9月5日星期六</title>
+<meta name="theme-color" content="#0a0d18">
+<title>赛博早安 · 2026年9月6日星期日</title>
 <style>
 :root {
-  --night: #0a0d18; --card: #131a2c; --line: #232c44;
-  --dawn: #f5b841; --ice: #9cc3e5; --ink: #efeae0; --muted: #8b93a8;
+  --night: #0a0d18; --card: rgba(19, 26, 44, .62); --line: #232c44;
+  --dawn: #f5b841; --dusk: #e8875d; --ice: #9cc3e5; --ink: #f2efe6; --muted: #8b93a8;
   --up: #e86a5d; --down: #7fbf9e;
-  --serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
-  --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
+  --sans: "PingFang SC", "HarmonyOS Sans SC", "MiSans", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+  --gold-grad: linear-gradient(120deg, #fdf3d8 0%, #f5b841 55%, #e8875d 100%);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { color-scheme: dark; }
 body {
-  background: var(--night); color: var(--ink);
-  font-family: var(--sans); font-size: 16px; line-height: 1.7;
+  background:
+    radial-gradient(120% 60% at 50% -8%, #1c2647 0%, rgba(28, 38, 71, 0) 55%),
+    var(--night);
+  color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.75;
   -webkit-font-smoothing: antialiased;
 }
-a { color: var(--ice); text-decoration: none; }
+a { color: var(--ice); text-decoration: none; transition: color .2s ease; }
 a:hover { color: var(--dawn); }
-a:focus-visible { outline: 2px solid var(--dawn); outline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--dawn); outline-offset: 2px; border-radius: 4px; }
 
 /* ---- 头图:今日宇宙 ---- */
-.hero { position: relative; min-height: min(72vh, 640px); background: var(--card); overflow: hidden; }
-.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero { position: relative; min-height: min(78vh, 700px); background: var(--night); overflow: hidden; }
+.hero img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  animation: settle 7s ease-out both;
+}
 .hero::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,13,24,.55) 0%, rgba(10,13,24,0) 35%, rgba(10,13,24,.92) 100%);
+  background:
+    radial-gradient(90% 70% at 50% 100%, rgba(10,13,24,0) 40%, rgba(10,13,24,.4) 100%),
+    linear-gradient(180deg, rgba(10,13,24,.6) 0%, rgba(10,13,24,.05) 32%, rgba(10,13,24,.28) 60%, rgba(10,13,24,.96) 92%, var(--night) 100%);
 }
-.hero-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 0 24px 28px; }
-.hero-cap h1 {
-  font-family: var(--serif); font-weight: 600;
-  font-size: clamp(44px, 9vw, 76px); line-height: 1.15; letter-spacing: .08em;
-  animation: rise .8s ease-out both;
-}
-.hero-date { font-family: var(--mono); font-size: 13px; letter-spacing: .18em; color: var(--ink); margin-bottom: 6px; }
-.hero-date em { font-style: normal; color: var(--dawn); }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes settle { from { transform: scale(1.06); } to { transform: scale(1); } }
 
-.apod-note { max-width: 720px; margin: 0 auto; padding: 22px 24px 0; }
-.apod-title { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--dawn); text-transform: uppercase; }
-.apod-note p.expl { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
-.apod-note p.credit { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 6px; }
+.brand {
+  position: absolute; top: 20px; right: 24px; z-index: 2;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .3em; color: rgba(242,239,230,.55);
+  writing-mode: vertical-rl;
+}
+.hero-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 0 24px 30px; max-width: 769px; margin: 0 auto; }
+.hero-date {
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: .16em; color: var(--ink);
+  margin-bottom: 10px; animation: rise .7s ease-out both;
+}
+.hero-date .diamond { color: var(--dawn); }
+.hero-date .pct { color: var(--muted); }
+.hero-cap h1 {
+  font-family: var(--serif); font-weight: 700;
+  font-size: clamp(52px, 11vw, 88px); line-height: 1.1; letter-spacing: .1em;
+  background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: rise .9s .12s ease-out both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+.apod-note { max-width: 720px; margin: 0 auto; padding: 26px 24px 0; }
+.apod-title {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+  background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.apod-note p.expl { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+.apod-note p.credit { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 8px; letter-spacing: .06em; }
 
 /* ---- 签名:日出光谱线 ---- */
 .spectrum {
-  height: 3px; max-width: 720px; margin: 0 auto;
-  background: linear-gradient(90deg, #0a0d18 0%, #2b3a67 30%, #7a4e8c 55%, #c86b3c 78%, #f5b841 100%);
+  height: 2px; max-width: 720px; margin: 0 auto;
+  background: linear-gradient(90deg, rgba(10,13,24,0) 0%, #2b3a67 26%, #7a4e8c 50%, #c86b3c 74%, #f5b841 96%);
+  box-shadow: 0 0 18px rgba(245, 184, 65, .18);
 }
-.spectrum.thin { height: 2px; opacity: .75; }
 
-main { max-width: 720px; margin: 0 auto; padding: 0 24px 24px; }
-section { padding: 34px 0 6px; }
+main { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+section { padding: 44px 0 10px; }
 .eyebrow {
-  font-family: var(--mono); font-size: 12px; letter-spacing: .22em;
-  color: var(--muted); text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .24em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 16px;
 }
+.eyebrow::before { content: ""; width: 18px; height: 2px; background: var(--gold-grad); border-radius: 2px; }
 .eyebrow b { color: var(--ink); font-weight: 500; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+
+.card {
+  position: relative;
+  background: var(--card);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-radius: 20px; padding: 26px;
+}
+.card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(155deg, rgba(245,184,65,.38), rgba(156,195,229,.16) 42%, rgba(255,255,255,.05) 78%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+}
 
 /* ---- 天气 ---- */
-.wx-top { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
-.wx-temp { font-family: var(--mono); font-size: clamp(48px, 10vw, 64px); font-weight: 500; line-height: 1; }
-.wx-desc { font-size: 20px; }
-.wx-desc .icon { font-size: 26px; margin-right: 4px; }
-.wx-sub { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 10px; }
+.wx-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.wx-city { font-size: 15px; color: var(--muted); letter-spacing: .08em; }
+.wx-desc { font-size: 16px; }
+.wx-desc .icon { font-size: 22px; margin-right: 6px; }
+.wx-main { display: flex; align-items: flex-start; gap: 16px; margin-top: 4px; }
+.wx-temp {
+  font-family: var(--mono); font-size: clamp(56px, 13vw, 76px); font-weight: 500; line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.wx-temp sup { font-size: .38em; color: var(--dawn); font-weight: 400; }
+.wx-feels { color: var(--muted); font-size: 13.5px; padding-top: 14px; font-family: var(--mono); }
+.wx-sub { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 6px; }
 .wx-sub i { font-style: normal; color: var(--ice); }
+svg.hours { display: block; width: 100%; height: auto; margin-top: 18px; }
+svg.hours .cv { font-family: var(--mono); font-size: 15px; fill: var(--ink); }
+svg.hours .cl { font-family: var(--mono); font-size: 12.5px; fill: var(--muted); letter-spacing: .05em; }
+svg.hours .ce { font-size: 15px; }
 .advice {
-  margin-top: 16px; padding: 12px 16px; border-radius: 10px;
-  background: rgba(245,184,65,.08); border: 1px solid rgba(245,184,65,.25);
+  margin-top: 20px; padding: 12px 18px; border-radius: 12px;
+  background: linear-gradient(120deg, rgba(245,184,65,.12), rgba(232,135,93,.07));
+  border: 1px solid rgba(245,184,65,.26);
   font-size: 15px;
 }
 .advice::before { content: "→ "; color: var(--dawn); }
 
 /* ---- 头条 ---- */
-ol.news { list-style: none; counter-reset: rank; }
-ol.news li { counter-increment: rank; padding: 13px 0; border-bottom: 1px solid var(--line); display: flex; gap: 14px; }
-ol.news li:last-child { border-bottom: 0; }
+ol.news { list-style: none; counter-reset: rank; padding: 4px 0; }
+ol.news li {
+  counter-increment: rank; display: flex; gap: 16px; align-items: baseline;
+  padding: 13px 14px; margin: 0 -14px; border-radius: 12px; transition: background .2s ease;
+}
+ol.news li:hover { background: rgba(255,255,255,.03); }
+ol.news li + li { border-top: 1px solid rgba(35,44,68,.55); }
 ol.news li::before {
   content: counter(rank, decimal-leading-zero);
-  font-family: var(--mono); font-size: 13px; color: var(--dawn);
-  padding-top: 3px; min-width: 24px;
+  font-family: var(--mono); font-size: 13px; min-width: 24px;
+  background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.news .t { font-size: 15.5px; font-weight: 500; line-height: 1.5; }
-.news .m { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 3px; }
+.news .t { font-size: 16px; font-weight: 600; line-height: 1.55; }
+.news .t a::after { content: " ↗"; font-size: .8em; opacity: 0; transition: opacity .2s ease; }
+.news .t a:hover::after { opacity: .7; }
+.news .m { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: .04em; }
 
 /* ---- 行情 ---- */
 table.mkt { width: 100%; border-collapse: collapse; }
-table.mkt td { padding: 12px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+table.mkt td { padding: 15px 0; border-bottom: 1px solid rgba(35,44,68,.55); vertical-align: middle; }
 table.mkt tr:last-child td { border-bottom: 0; }
-.coin-name { font-weight: 600; }
-.coin-symbol { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: 8px; }
-.coin-price { font-family: var(--mono); font-size: 17px; text-align: right; white-space: nowrap; }
-.coin-cny { display: block; font-size: 12px; color: var(--muted); font-weight: 400; margin-top: 2px; }
-.chg { font-family: var(--mono); font-size: 13px; text-align: right; white-space: nowrap; }
-.chg.up { color: var(--up); } .chg.down { color: var(--down); }
+.coin-name { font-weight: 600; font-size: 16px; white-space: nowrap; }
+.coin-symbol { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-left: 8px; letter-spacing: .08em; }
+td.coin-spark { width: 116px; padding: 15px 14px; }
+svg.spark { display: block; width: 110px; height: 34px; }
+.coin-price { font-family: var(--mono); font-size: 17px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.coin-cny { display: block; font-size: 11.5px; color: var(--muted); font-weight: 400; margin-top: 3px; }
+.chg { font-family: var(--mono); font-size: 12px; text-align: right; white-space: nowrap; }
+.chg span { display: inline-block; padding: 3px 9px; border-radius: 999px; }
+.chg.up span { color: var(--up); background: rgba(232,106,93,.1); }
+.chg.down span { color: var(--down); background: rgba(127,191,158,.1); }
+@media (max-width: 470px) { td.coin-spark { display: none; } }
 
 /* ---- 诗 ---- */
-section.poem { text-align: center; padding-bottom: 44px; }
+section.poem { text-align: center; padding-bottom: 30px; }
+.poem .orn { font-family: var(--serif); font-size: 44px; line-height: 1; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .poem blockquote {
-  font-family: var(--serif); font-size: clamp(17px, 4vw, 20px); line-height: 2.1;
-  margin: 18px auto 0; max-width: 560px;
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(18px, 4.4vw, 21px); line-height: 2.15;
+  margin: 14px auto 0; max-width: 540px;
 }
 .poem .by {
-  font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 18px;
-  letter-spacing: .1em;
+  font-family: var(--mono); font-size: 12.5px; font-style: normal; color: var(--muted);
+  margin-top: 20px; letter-spacing: .12em;
 }
 .poem .by::before { content: "—— "; }
 
 /* ---- 页脚 ---- */
-footer { max-width: 720px; margin: 0 auto; padding: 0 24px 44px; }
-footer .cols { font-family: var(--mono); font-size: 11.5px; color: var(--muted); line-height: 2; letter-spacing: .04em; }
+footer { max-width: 720px; margin: 0 auto; padding: 6px 24px 48px; text-align: center; }
+svg.constel { width: 210px; height: 36px; margin: 8px auto 16px; display: block; }
+footer .cols { font-family: var(--mono); font-size: 11.5px; color: var(--muted); line-height: 2.1; letter-spacing: .05em; }
 footer .cols a { color: var(--ice); }
 
 /* ---- 兜底 ---- */
-.miss { font-size: 14px; color: var(--muted); }
+.miss {
+  font-size: 14px; color: var(--muted); padding: 16px 20px;
+  border: 1px dashed rgba(139,147,168,.4); border-radius: 14px;
+}
 .miss::before { content: "✕ "; color: var(--up); }
 
-@media (prefers-reduced-motion: reduce) { .hero-cap h1 { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero img, .hero-cap h1, .hero-date { animation: none; }
+  * { transition: none !important; }
+}
 </style>
 </head>
 <body>
 <figure class="hero">
         <img src="https://apod.nasa.gov/apod/image/2609/2026Eclipse_WB57GoPro_Totality_H264_1024.jpg" alt="Chasing the Moon&#39;s Shadow">
+        <span class="brand">赛博早安 · CYBER MORNING</span>
         <figcaption class="hero-cap">
-          <p class="hero-date"><em>◈</em> 2026年9月5日星期六</p>
-          <h1>晚上好</h1>
+          <p class="hero-date"><span class="diamond">◈</span> 2026年9月6日星期日 <span class="pct">· 第 249 天 / 365 · 已过 68%</span></p>
+          <h1>夜深了</h1>
         </figcaption>
       </figure>
       <div class="apod-note">
@@ -140,86 +211,148 @@ footer .cols a { color: var(--ice); }
 <div class="spectrum" role="presentation"></div>
 <main>
 <section><p class="eyebrow">你头顶的天 · <b>WEATHER</b></p><div class="card">
-      <div class="wx-top">
-        <span class="wx-temp">30°</span>
+      <div class="wx-head">
+        <span class="wx-city">上海</span>
         <span class="wx-desc"><span class="icon">⛅</span>局部多云</span>
       </div>
-      <p class="wx-sub">上海 · 体感 33° · 今日 <i>24° ~ 31°</i> · 降水概率 35% · 风 15 km/h</p>
-      <p class="advice">短袖就好</p>
+      <div class="wx-main">
+        <span class="wx-temp">24<sup>°C</sup></span>
+        <span class="wx-feels">体感 28°</span>
+      </div>
+      <p class="wx-sub">今日 <i>24° ~ 30°</i> · 降水概率 74% · 风 7 km/h</p>
+      <svg class="hours" viewBox="0 0 600 172" role="img" aria-label="未来12小时温度曲线">
+    <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9cc3e5" stop-opacity=".28"/><stop offset="1" stop-color="#9cc3e5" stop-opacity="0"/>
+    </linearGradient></defs>
+    <path d="M26,108 L26.0,96.3 L75.8,96.3 L125.6,96.3 L175.5,96.3 L225.3,96.3 L275.1,96.3 L324.9,84.6 L374.7,72.9 L424.5,61.1 L474.4,49.4 L524.2,37.7 L574.0,37.7 L574,108 Z" fill="url(#hg)"/>
+    <polyline points="26.0,96.3 75.8,96.3 125.6,96.3 175.5,96.3 225.3,96.3 275.1,96.3 324.9,84.6 374.7,72.9 424.5,61.1 474.4,49.4 524.2,37.7 574.0,37.7" fill="none" stroke="#9cc3e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="26" cy="96.28571428571429" r="3.5" fill="#f5b841"/>
+    
+    <text x="26" y="84.28571428571429" text-anchor="start" class="cv">24° <tspan fill="#f5b841">现在</tspan></text>
+    <text x="26" y="134" text-anchor="start" class="cl">现在</text>
+    <text x="26" y="158" text-anchor="start" class="ce">⛅</text>
+    <text x="175.45454545454547" y="84.28571428571429" text-anchor="middle" class="cv">24°</text>
+    <text x="175.45454545454547" y="134" text-anchor="middle" class="cl">04:00</text>
+    <text x="175.45454545454547" y="158" text-anchor="middle" class="ce">🌦️</text>
+    <text x="324.90909090909093" y="72.57142857142857" text-anchor="middle" class="cv">25°</text>
+    <text x="324.90909090909093" y="134" text-anchor="middle" class="cl">07:00</text>
+    <text x="324.90909090909093" y="158" text-anchor="middle" class="ce">☀️</text>
+    <text x="474.3636363636364" y="37.42857142857143" text-anchor="middle" class="cv">28°</text>
+    <text x="474.3636363636364" y="134" text-anchor="middle" class="cl">10:00</text>
+    <text x="474.3636363636364" y="158" text-anchor="middle" class="ce">🌦️</text>
+    <text x="574" y="25.714285714285722" text-anchor="end" class="cv">29°</text>
+    <text x="574" y="134" text-anchor="end" class="cl">12:00</text>
+    <text x="574" y="158" text-anchor="end" class="ce">🌦️</text>
+  </svg>
+      <p class="advice">带伞 · 短袖,备件薄外套</p>
     </div></section>
-<div class="spectrum thin" role="presentation"></div>
+<div class="spectrum" role="presentation"></div>
 <section><p class="eyebrow">今晨技术头条 · <b>HACKER NEWS</b></p><ol class="card news">
       <li><div>
-        <p class="t"><a href="https://www.bbc.com/news/articles/cvgyn8q8gqxo" target="_blank" rel="noopener">Why are European countries moving their gold out of North America?</a></p>
-        <p class="m">▲ 66 &nbsp;💬 41</p>
+        <p class="t"><a href="https://devquasar.com/hardware/the-60-gaming-pc-amd-bc-250/" target="_blank" rel="noopener">The &quot;$60 Gaming PC&quot; – AMD BC-250 (2025)</a></p>
+        <p class="m">▲ 131 &nbsp;·&nbsp; 💬 40</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://reason.com/2026/09/02/wisconsin-cops-used-flock-over-100-times-to-track-a-navy-veteran-after-he-lawfully-recorded-a-traffic-stop/" target="_blank" rel="noopener">Flock used &gt;100 times to track veteran who recorded traffic stop</a></p>
+        <p class="m">▲ 48 &nbsp;·&nbsp; 💬 4</p>
       </div></li>
 <li><div>
         <p class="t"><a href="https://nvd.nist.gov/vuln/detail/cve-2026-85046" target="_blank" rel="noopener">Actively exploited sandbox RCE in all Chromium versions</a></p>
-        <p class="m">▲ 416 &nbsp;💬 234</p>
+        <p class="m">▲ 664 &nbsp;·&nbsp; 💬 375</p>
       </div></li>
 <li><div>
         <p class="t"><a href="https://collusion.wiki/" target="_blank" rel="noopener">Discovery of a new OpenAI agent message board</a></p>
-        <p class="m">▲ 1616 &nbsp;💬 1274</p>
-      </div></li>
-<li><div>
-        <p class="t"><a href="https://www.anthropic.com/research/formalizing-fermats-last-theorem" target="_blank" rel="noopener">Formalizing Fermat&#39;s Last Theorem</a></p>
-        <p class="m">▲ 574 &nbsp;💬 357</p>
-      </div></li>
-<li><div>
-        <p class="t"><a href="https://www.statichost.eu/" target="_blank" rel="noopener">Statichost.eu – European static site hosting</a></p>
-        <p class="m">▲ 230 &nbsp;💬 71</p>
-      </div></li>
-<li><div>
-        <p class="t"><a href="https://openrouter.ai/openai/gpt-6-astra" target="_blank" rel="noopener">GPT-6 Astra on OpenRouter</a></p>
-        <p class="m">▲ 187 &nbsp;💬 100</p>
+        <p class="m">▲ 1917 &nbsp;·&nbsp; 💬 1454</p>
       </div></li>
 <li><div>
         <p class="t"><a href="https://codeberg.org/mv12star/shitter/wiki/Instances" target="_blank" rel="noopener">Nitter has more working instances than before the takedowns</a></p>
-        <p class="m">▲ 109 &nbsp;💬 36</p>
+        <p class="m">▲ 454 &nbsp;·&nbsp; 💬 182</p>
       </div></li>
 <li><div>
-        <p class="t"><a href="https://eebench.org/blog/can-ai-design-circuit-boards-yet/" target="_blank" rel="noopener">Can AI design circuit boards yet?</a></p>
-        <p class="m">▲ 230 &nbsp;💬 139</p>
+        <p class="t"><a href="http://terpstrakeyboard.com/" target="_blank" rel="noopener">Terpstra Keyboard</a></p>
+        <p class="m">▲ 63 &nbsp;·&nbsp; 💬 30</p>
       </div></li>
 <li><div>
-        <p class="t"><a href="https://nesbitt.io/2026/09/01/git-submodules-as-a-package-manager.html" target="_blank" rel="noopener">Git Submodules as a Package Manager</a></p>
-        <p class="m">▲ 40 &nbsp;💬 4</p>
+        <p class="t"><a href="https://www.anthropic.com/research/formalizing-fermats-last-theorem" target="_blank" rel="noopener">Formalizing Fermat&#39;s Last Theorem</a></p>
+        <p class="m">▲ 702 &nbsp;·&nbsp; 💬 442</p>
       </div></li>
 <li><div>
-        <p class="t"><a href="https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-2" target="_blank" rel="noopener">Artificial Analysis Intelligence Index v4.2</a></p>
-        <p class="m">▲ 102 &nbsp;💬 37</p>
+        <p class="t"><a href="https://wikiworkersunited.org/announcements/2026-09-04-us-wikimedia-foundation-workers-overwhelmingly-vote-to-form-union-with-cwa/" target="_blank" rel="noopener">Wikimedia Foundation Workers Overwhelmingly Vote to Form Union with CWA</a></p>
+        <p class="m">▲ 55 &nbsp;·&nbsp; 💬 1</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://www.sgtrains.com/technology-infosys.html" target="_blank" rel="noopener">Singapore subway (mrt) information display types</a></p>
+        <p class="m">▲ 12 &nbsp;·&nbsp; 💬 3</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://www.nationalgeographic.com/animals/article/falcons-migration-angola-falcopolis" target="_blank" rel="noopener">A Million Falcons Went Missing. Here’s How They Were Found</a></p>
+        <p class="m">▲ 29 &nbsp;·&nbsp; 💬 4</p>
       </div></li>
     </ol></section>
-<div class="spectrum thin" role="presentation"></div>
-<section><p class="eyebrow">币价行情 · <b>MARKETS</b></p><table class="mkt card" style="border-collapse:collapse">
+<div class="spectrum" role="presentation"></div>
+<section><p class="eyebrow">币价行情 · <b>MARKETS</b></p><table class="mkt card">
       <tr>
         <td><span class="coin-name">Bitcoin</span><span class="coin-symbol">BTC</span></td>
-        <td class="coin-price">$79,653<span class="coin-cny">≈ ¥534,695</span></td>
-        <td class="chg down">▼ 1.32%</td>
+        <td class="coin-spark"><svg class="spark" viewBox="0 0 110 34" aria-hidden="true">
+    <defs><linearGradient id="sg0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e86a5d" stop-opacity=".22"/><stop offset="1" stop-color="#e86a5d" stop-opacity="0"/>
+    </linearGradient></defs>
+    <polygon points="2,32 2.0,23.2 4.6,22.6 7.2,22.2 9.8,22.7 12.3,22.9 14.9,18.8 17.5,15.2 20.1,19.7 22.7,23.9 25.3,25.7 27.9,20.5 30.4,23.9 33.0,19.5 35.6,18.1 38.2,19.5 40.8,19.0 43.4,24.1 46.0,23.4 48.5,26.0 51.1,27.0 53.7,28.4 56.3,26.3 58.9,30.6 61.5,32.0 64.0,28.5 66.6,27.1 69.2,29.2 71.8,25.0 74.4,24.5 77.0,19.4 79.6,5.1 82.1,2.0 84.7,5.0 87.3,4.5 89.9,4.1 92.5,14.5 95.1,12.6 97.7,12.8 100.2,13.5 102.8,14.0 105.4,13.2 108.0,12.8 108,32" fill="url(#sg0)"/>
+    <polyline points="2.0,23.2 4.6,22.6 7.2,22.2 9.8,22.7 12.3,22.9 14.9,18.8 17.5,15.2 20.1,19.7 22.7,23.9 25.3,25.7 27.9,20.5 30.4,23.9 33.0,19.5 35.6,18.1 38.2,19.5 40.8,19.0 43.4,24.1 46.0,23.4 48.5,26.0 51.1,27.0 53.7,28.4 56.3,26.3 58.9,30.6 61.5,32.0 64.0,28.5 66.6,27.1 69.2,29.2 71.8,25.0 74.4,24.5 77.0,19.4 79.6,5.1 82.1,2.0 84.7,5.0 87.3,4.5 89.9,4.1 92.5,14.5 95.1,12.6 97.7,12.8 100.2,13.5 102.8,14.0 105.4,13.2 108.0,12.8" fill="none" stroke="#e86a5d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg></td>
+        <td class="coin-price">$80,094<span class="coin-cny">≈ ¥537,740</span></td>
+        <td class="chg up"><span>▲ 0.52%</span></td>
       </tr>
 <tr>
         <td><span class="coin-name">Ethereum</span><span class="coin-symbol">ETH</span></td>
-        <td class="coin-price">$2,454<span class="coin-cny">≈ ¥16,470</span></td>
-        <td class="chg down">▼ 2.07%</td>
+        <td class="coin-spark"><svg class="spark" viewBox="0 0 110 34" aria-hidden="true">
+    <defs><linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e86a5d" stop-opacity=".22"/><stop offset="1" stop-color="#e86a5d" stop-opacity="0"/>
+    </linearGradient></defs>
+    <polygon points="2,32 2.0,17.3 4.6,16.9 7.2,15.7 9.8,16.4 12.3,16.1 14.9,13.8 17.5,2.0 20.1,9.5 22.7,22.0 25.3,23.9 27.9,18.2 30.4,17.3 33.0,13.7 35.6,13.0 38.2,13.3 40.8,13.8 43.4,17.9 46.0,18.2 48.5,21.0 51.1,23.4 53.7,25.8 56.3,24.5 58.9,28.9 61.5,32.0 64.0,30.2 66.6,28.8 69.2,31.4 71.8,26.0 74.4,26.8 77.0,22.9 79.6,8.7 82.1,6.5 84.7,7.1 87.3,5.8 89.9,2.4 92.5,17.3 95.1,15.4 97.7,17.1 100.2,16.9 102.8,17.6 105.4,16.1 108.0,15.7 108,32" fill="url(#sg1)"/>
+    <polyline points="2.0,17.3 4.6,16.9 7.2,15.7 9.8,16.4 12.3,16.1 14.9,13.8 17.5,2.0 20.1,9.5 22.7,22.0 25.3,23.9 27.9,18.2 30.4,17.3 33.0,13.7 35.6,13.0 38.2,13.3 40.8,13.8 43.4,17.9 46.0,18.2 48.5,21.0 51.1,23.4 53.7,25.8 56.3,24.5 58.9,28.9 61.5,32.0 64.0,30.2 66.6,28.8 69.2,31.4 71.8,26.0 74.4,26.8 77.0,22.9 79.6,8.7 82.1,6.5 84.7,7.1 87.3,5.8 89.9,2.4 92.5,17.3 95.1,15.4 97.7,17.1 100.2,16.9 102.8,17.6 105.4,16.1 108.0,15.7" fill="none" stroke="#e86a5d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg></td>
+        <td class="coin-price">$2,478<span class="coin-cny">≈ ¥16,641</span></td>
+        <td class="chg up"><span>▲ 0.91%</span></td>
       </tr>
 <tr>
         <td><span class="coin-name">Solana</span><span class="coin-symbol">SOL</span></td>
-        <td class="coin-price">$102<span class="coin-cny">≈ ¥685</span></td>
-        <td class="chg down">▼ 1.46%</td>
+        <td class="coin-spark"><svg class="spark" viewBox="0 0 110 34" aria-hidden="true">
+    <defs><linearGradient id="sg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e86a5d" stop-opacity=".22"/><stop offset="1" stop-color="#e86a5d" stop-opacity="0"/>
+    </linearGradient></defs>
+    <polygon points="2,32 2.0,8.3 4.6,7.2 7.2,7.1 9.8,7.8 12.3,8.8 14.9,4.7 17.5,2.0 20.1,8.7 22.7,17.4 25.3,19.6 27.9,13.8 30.4,15.4 33.0,15.1 35.6,12.2 38.2,14.0 40.8,12.6 43.4,17.5 46.0,18.1 48.5,21.3 51.1,24.3 53.7,25.6 56.3,24.1 58.9,27.6 61.5,32.0 64.0,28.2 66.6,25.4 69.2,25.9 71.8,21.5 74.4,22.4 77.0,18.9 79.6,9.5 82.1,8.2 84.7,12.7 87.3,11.7 89.9,10.1 92.5,19.2 95.1,18.3 97.7,18.5 100.2,18.2 102.8,18.5 105.4,15.9 108.0,13.7 108,32" fill="url(#sg2)"/>
+    <polyline points="2.0,8.3 4.6,7.2 7.2,7.1 9.8,7.8 12.3,8.8 14.9,4.7 17.5,2.0 20.1,8.7 22.7,17.4 25.3,19.6 27.9,13.8 30.4,15.4 33.0,15.1 35.6,12.2 38.2,14.0 40.8,12.6 43.4,17.5 46.0,18.1 48.5,21.3 51.1,24.3 53.7,25.6 56.3,24.1 58.9,27.6 61.5,32.0 64.0,28.2 66.6,25.4 69.2,25.9 71.8,21.5 74.4,22.4 77.0,18.9 79.6,9.5 82.1,8.2 84.7,12.7 87.3,11.7 89.9,10.1 92.5,19.2 95.1,18.3 97.7,18.5 100.2,18.2 102.8,18.5 105.4,15.9 108.0,13.7" fill="none" stroke="#e86a5d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg></td>
+        <td class="coin-price">$104<span class="coin-cny">≈ ¥696</span></td>
+        <td class="chg up"><span>▲ 1.80%</span></td>
       </tr>
     </table></section>
-<div class="spectrum thin" role="presentation"></div>
-<section><p class="eyebrow">今日一诗 · <b>POETRY</b></p><blockquote>
-      Margaret, are you grieving<br>Over Goldengrove unleaving?<br>Leaves, like the things of man, you<br>With your fresh thoughts care for, can you?
-      <p class="by">Gerard Manley Hopkins,《To a Young Child》</p>
-    </blockquote></section>
+<div class="spectrum" role="presentation"></div>
+<section><p class="eyebrow">今日一诗 · <b>POETRY</b></p><div class="poem">
+      <p class="orn">❝</p>
+      <blockquote>
+        Morning, evening, noon, and night,<br>&quot;Praise God!&quot; sang Theocrite.<br><br>Then to his poor trade he turned,
+      </blockquote>
+      <p class="by">Robert Browning,《The Boy and the Angel》</p>
+    </div></section>
 </main>
 <footer>
-  <div class="spectrum thin" role="presentation" style="margin:0 0 18px"></div>
+  <svg class="constel" viewBox="0 0 240 40" aria-hidden="true">
+  <defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#9cc3e5"/><stop offset="1" stop-color="#f5b841"/>
+  </linearGradient></defs>
+  <polyline points="10,30 62,14 112,26 162,8 208,22 230,13" fill="none" stroke="url(#cg)" stroke-width="1" opacity=".55"/>
+  <g opacity=".9">
+    <circle cx="10" cy="30" r="2" fill="#9cc3e5"/><circle cx="62" cy="14" r="1.5" fill="#9cc3e5"/>
+    <circle cx="112" cy="26" r="1.5" fill="#f5b841"/><circle cx="162" cy="8" r="2.2" fill="#f5b841"/>
+    <circle cx="208" cy="22" r="1.5" fill="#f5b841"/><circle cx="230" cy="13" r="2" fill="#f5b841"/>
+  </g>
+</svg>
   <p class="cols">
     赛博早安 · 一份自动生成的晨报<br>
     信号来源:NASA APOD / Open-Meteo / HackerNews / CoinGecko / PoetryDB<br>
-    生成于 2026/09/05 14:40(北京时间)
+    生成于 2026/09/06 01:11(北京时间)
   </p>
 </footer>
 </body>
