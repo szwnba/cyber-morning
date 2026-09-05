@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>赛博早安 · 2026年9月5日星期六</title>
+<style>
+:root {
+  --night: #0a0d18; --card: #131a2c; --line: #232c44;
+  --dawn: #f5b841; --ice: #9cc3e5; --ink: #efeae0; --muted: #8b93a8;
+  --up: #e86a5d; --down: #7fbf9e;
+  --serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { color-scheme: dark; }
+body {
+  background: var(--night); color: var(--ink);
+  font-family: var(--sans); font-size: 16px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ice); text-decoration: none; }
+a:hover { color: var(--dawn); }
+a:focus-visible { outline: 2px solid var(--dawn); outline-offset: 2px; }
+
+/* ---- 头图:今日宇宙 ---- */
+.hero { position: relative; min-height: min(72vh, 640px); background: var(--card); overflow: hidden; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,13,24,.55) 0%, rgba(10,13,24,0) 35%, rgba(10,13,24,.92) 100%);
+}
+.hero-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 0 24px 28px; }
+.hero-cap h1 {
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(44px, 9vw, 76px); line-height: 1.15; letter-spacing: .08em;
+  animation: rise .8s ease-out both;
+}
+.hero-date { font-family: var(--mono); font-size: 13px; letter-spacing: .18em; color: var(--ink); margin-bottom: 6px; }
+.hero-date em { font-style: normal; color: var(--dawn); }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.apod-note { max-width: 720px; margin: 0 auto; padding: 22px 24px 0; }
+.apod-title { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--dawn); text-transform: uppercase; }
+.apod-note p.expl { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+.apod-note p.credit { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+/* ---- 签名:日出光谱线 ---- */
+.spectrum {
+  height: 3px; max-width: 720px; margin: 0 auto;
+  background: linear-gradient(90deg, #0a0d18 0%, #2b3a67 30%, #7a4e8c 55%, #c86b3c 78%, #f5b841 100%);
+}
+.spectrum.thin { height: 2px; opacity: .75; }
+
+main { max-width: 720px; margin: 0 auto; padding: 0 24px 24px; }
+section { padding: 34px 0 6px; }
+.eyebrow {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .22em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 14px;
+}
+.eyebrow b { color: var(--ink); font-weight: 500; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+
+/* ---- 天气 ---- */
+.wx-top { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+.wx-temp { font-family: var(--mono); font-size: clamp(48px, 10vw, 64px); font-weight: 500; line-height: 1; }
+.wx-desc { font-size: 20px; }
+.wx-desc .icon { font-size: 26px; margin-right: 4px; }
+.wx-sub { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 10px; }
+.wx-sub i { font-style: normal; color: var(--ice); }
+.advice {
+  margin-top: 16px; padding: 12px 16px; border-radius: 10px;
+  background: rgba(245,184,65,.08); border: 1px solid rgba(245,184,65,.25);
+  font-size: 15px;
+}
+.advice::before { content: "→ "; color: var(--dawn); }
+
+/* ---- 头条 ---- */
+ol.news { list-style: none; counter-reset: rank; }
+ol.news li { counter-increment: rank; padding: 13px 0; border-bottom: 1px solid var(--line); display: flex; gap: 14px; }
+ol.news li:last-child { border-bottom: 0; }
+ol.news li::before {
+  content: counter(rank, decimal-leading-zero);
+  font-family: var(--mono); font-size: 13px; color: var(--dawn);
+  padding-top: 3px; min-width: 24px;
+}
+.news .t { font-size: 15.5px; font-weight: 500; line-height: 1.5; }
+.news .m { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* ---- 行情 ---- */
+table.mkt { width: 100%; border-collapse: collapse; }
+table.mkt td { padding: 12px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+table.mkt tr:last-child td { border-bottom: 0; }
+.coin-name { font-weight: 600; }
+.coin-symbol { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: 8px; }
+.coin-price { font-family: var(--mono); font-size: 17px; text-align: right; white-space: nowrap; }
+.coin-cny { display: block; font-size: 12px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+.chg { font-family: var(--mono); font-size: 13px; text-align: right; white-space: nowrap; }
+.chg.up { color: var(--up); } .chg.down { color: var(--down); }
+
+/* ---- 诗 ---- */
+section.poem { text-align: center; padding-bottom: 44px; }
+.poem blockquote {
+  font-family: var(--serif); font-size: clamp(17px, 4vw, 20px); line-height: 2.1;
+  margin: 18px auto 0; max-width: 560px;
+}
+.poem .by {
+  font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 18px;
+  letter-spacing: .1em;
+}
+.poem .by::before { content: "—— "; }
+
+/* ---- 页脚 ---- */
+footer { max-width: 720px; margin: 0 auto; padding: 0 24px 44px; }
+footer .cols { font-family: var(--mono); font-size: 11.5px; color: var(--muted); line-height: 2; letter-spacing: .04em; }
+footer .cols a { color: var(--ice); }
+
+/* ---- 兜底 ---- */
+.miss { font-size: 14px; color: var(--muted); }
+.miss::before { content: "✕ "; color: var(--up); }
+
+@media (prefers-reduced-motion: reduce) { .hero-cap h1 { animation: none; } }
+</style>
+</head>
+<body>
+<figure class="hero">
+        <img src="https://apod.nasa.gov/apod/image/2609/2026Eclipse_WB57GoPro_Totality_H264_1024.jpg" alt="Chasing the Moon&#39;s Shadow">
+        <figcaption class="hero-cap">
+          <p class="hero-date"><em>◈</em> 2026年9月5日星期六</p>
+          <h1>晚上好</h1>
+        </figcaption>
+      </figure>
+      <div class="apod-note">
+        <p class="apod-title">今日宇宙 · Chasing the Moon&#39;s Shadow</p>
+        <p class="expl">Chasing the shadow of a New Moon, NASA’s WB-57F high altitude research aircraft took to the skies off the coast of Iceland on August 12 to observe a total solar eclipse. At 50,000 feet the aircraft was piloted along the precisely determined path of totality to maximize its time in the Moon’s shadow. A suite of high-resolution cameras on board was able to record eclipse data from above the clouds, dust, and atmospheric water vapor that interfere with observations made closer to the ground. This view from the cockpit, taken from an inflight video, captures the solar corona emerging at the beginning of totality. The sky appears dark in the shadow of the Moon. Venus is shining left of center in the video frame, while Jupiter and Mercury are just visible to the right of the eclipsed Sun. But the sky is bright along the distant horizon below, beyond the reach of the Moon&#39;s shadow.  APOD&#39;s main NASA site is moving: From apod.nasa.gov to science.nasa.gov/apod</p>
+        <p class="credit">NASA APOD</p>
+      </div>
+<div class="spectrum" role="presentation"></div>
+<main>
+<section><p class="eyebrow">你头顶的天 · <b>WEATHER</b></p><div class="card">
+      <div class="wx-top">
+        <span class="wx-temp">31°</span>
+        <span class="wx-desc"><span class="icon">⛅</span>局部多云</span>
+      </div>
+      <p class="wx-sub">上海 · 体感 33° · 今日 <i>24° ~ 31°</i> · 降水概率 35% · 风 15 km/h</p>
+      <p class="advice">短袖就好</p>
+    </div></section>
+<div class="spectrum thin" role="presentation"></div>
+<section><p class="eyebrow">今晨技术头条 · <b>HACKER NEWS</b></p><ol class="card news">
+      <li><div>
+        <p class="t"><a href="https://nvd.nist.gov/vuln/detail/cve-2026-85046" target="_blank" rel="noopener">Actively exploited sandbox RCE in all Chromium versions</a></p>
+        <p class="m">▲ 389 &nbsp;💬 222</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://collusion.wiki/" target="_blank" rel="noopener">Discovery of a new OpenAI agent message board</a></p>
+        <p class="m">▲ 1596 &nbsp;💬 1255</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://www.anthropic.com/research/formalizing-fermats-last-theorem" target="_blank" rel="noopener">Formalizing Fermat&#39;s Last Theorem</a></p>
+        <p class="m">▲ 565 &nbsp;💬 350</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://www.statichost.eu/" target="_blank" rel="noopener">Statichost.eu – European static site hosting</a></p>
+        <p class="m">▲ 213 &nbsp;💬 69</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://openrouter.ai/openai/gpt-6-astra" target="_blank" rel="noopener">GPT-6 Astra on OpenRouter</a></p>
+        <p class="m">▲ 174 &nbsp;💬 90</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://eebench.org/blog/can-ai-design-circuit-boards-yet/" target="_blank" rel="noopener">Can AI design circuit boards yet?</a></p>
+        <p class="m">▲ 217 &nbsp;💬 134</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://codeberg.org/mv12star/shitter/wiki/Instances" target="_blank" rel="noopener">Nitter has more working instances than before the takedowns</a></p>
+        <p class="m">▲ 82 &nbsp;💬 24</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-2" target="_blank" rel="noopener">Artificial Analysis Intelligence Index v4.2</a></p>
+        <p class="m">▲ 94 &nbsp;💬 30</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://nesbitt.io/2026/09/01/git-submodules-as-a-package-manager.html" target="_blank" rel="noopener">Git Submodules as a Package Manager</a></p>
+        <p class="m">▲ 30 &nbsp;💬 4</p>
+      </div></li>
+<li><div>
+        <p class="t"><a href="https://mullvad.net/en/blog/shutting-down-our-public-encrypted-dns-servers-and-sponsoring-quad9-instead" target="_blank" rel="noopener">Shutting down our public encrypted DNS</a></p>
+        <p class="m">▲ 306 &nbsp;💬 136</p>
+      </div></li>
+    </ol></section>
+<div class="spectrum thin" role="presentation"></div>
+<section><p class="eyebrow">币价行情 · <b>MARKETS</b></p><table class="mkt card" style="border-collapse:collapse">
+      <tr>
+        <td><span class="coin-name">Bitcoin</span><span class="coin-symbol">BTC</span></td>
+        <td class="coin-price">$79,544<span class="coin-cny">≈ ¥533,813</span></td>
+        <td class="chg down">▼ 1.67%</td>
+      </tr>
+<tr>
+        <td><span class="coin-name">Ethereum</span><span class="coin-symbol">ETH</span></td>
+        <td class="coin-price">$2,451<span class="coin-cny">≈ ¥16,447</span></td>
+        <td class="chg down">▼ 2.20%</td>
+      </tr>
+<tr>
+        <td><span class="coin-name">Solana</span><span class="coin-symbol">SOL</span></td>
+        <td class="coin-price">$102<span class="coin-cny">≈ ¥683</span></td>
+        <td class="chg down">▼ 1.68%</td>
+      </tr>
+    </table></section>
+<div class="spectrum thin" role="presentation"></div>
+<section><p class="eyebrow">今日一诗 · <b>POETRY</b></p><blockquote>
+      What is he buzzing in my ears?<br>  &quot;Now that I come to die,<br>Do I view the world as a vale of tears?&quot;<br>  Ah, reverend sir, not I!
+      <p class="by">Robert Browning,《Confessions》</p>
+    </blockquote></section>
+</main>
+<footer>
+  <div class="spectrum thin" role="presentation" style="margin:0 0 18px"></div>
+  <p class="cols">
+    赛博早安 · 一份自动生成的晨报<br>
+    信号来源:NASA APOD / Open-Meteo / HackerNews / CoinGecko / PoetryDB<br>
+    生成于 2026/09/05 13:53(北京时间)
+  </p>
+</footer>
+</body>
+</html>
